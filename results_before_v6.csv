@@ -1,0 +1,21 @@
+time_utc,agent,test_id,category,difficulty,provider,model,prompt,passed,outcome,latency_s,finish_reason,reason,answer_preview
+2026-11-24T08:01:10+00:00,my-first-agent,T01,counting,easy,openrouter,google/gemma-4-26b-a4b-it:free,"List exactly seven animals, one per line, no numbering.",True,passed,11.48,stop,,Elephant | Tiger | Penguin | Giraffe | Dolphin | Wolf | Koala
+2026-11-24T08:01:13+00:00,my-first-agent,T02,counting,easy,openrouter,nvidia/nemotron-3-ultra-550b-a55b:free,"Name four rivers, one per line, no extra text.",True,passed,1.77,stop,,Nile   | Amazon   | Yangtze   | Mississippi
+2026-11-24T08:01:16+00:00,my-first-agent,T03,format,easy,openrouter,liquid/lfm-3-1.7b:free,Write the word yes and nothing else.,True,passed,0.72,stop,,yes
+2026-11-24T08:01:19+00:00,my-first-agent,T04,facts,easy,openrouter,nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free,What is the capital of Australia? Answer with one word only.,True,passed,0.71,stop,,Canberra
+2026-11-24T08:01:22+00:00,my-first-agent,T05,math,medium,openrouter,liquid/lfm-3-1.7b:free,What is 17 times 23? Reply with only the number.,True,passed,0.95,stop,,391
+2026-11-24T08:01:26+00:00,my-first-agent,T06,math,medium,openrouter,inclusionai/ling-3.2-flash:free,What is 15 percent of 240? Reply with only the number.,True,passed,1.89,stop,,36
+2026-11-24T08:01:31+00:00,my-first-agent,T07,json,medium,openrouter,liquid/lfm-3-1.7b:free,Return only valid JSON with keys name and age for a fictional person. No other text.,True,passed,3.62,stop,,"{ |   ""name"": ""Luna Starling"", |   ""age"": 28 | }"
+2026-11-24T08:01:49+00:00,my-first-agent,T08,sorting,medium,openrouter,nvidia/nemotron-3-ultra-550b-a55b:free,"List five fruits in alphabetical order, one per line, no numbering.",True,passed,15.51,stop,,Apple | Banana | Cherry | Date | Elderberry
+2026-11-24T08:01:57+00:00,my-first-agent,T09,text,hard,openrouter,nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free,Reverse the word telescope. Output only the reversed word.,False,failed_check,6.29,length,expected 'epocselet' in answer,
+2026-11-24T08:02:09+00:00,my-first-agent,T10,constraints,hard,openrouter,nvidia/nemotron-3.5-super-vl:free,Describe the ocean in exactly 12 words. Output only the sentence.,False,failed_check,10.28,length,"expected 12 words, got 0",
+2026-11-24T08:02:13+00:00,my-first-agent,T11,constraints,hard,openrouter,liquid/lfm-3-1.7b:free,"Give three palindromic words, one per line, no extra text.",True,passed,1.58,stop,,racecar | madam | level
+2026-11-24T08:02:24+00:00,my-first-agent,T12,constraints,hard,openrouter,nvidia/nemotron-3.5-super-vl:free,Write one sentence of at least 8 words without using the letter e.,False,failed_check,9.16,length,needs 8+ words and no letter 'e',
+2026-11-24T08:02:30+00:00,my-first-agent,T13,math,easy,openrouter,dots-studio/dots-3-note-preview:free,What is 144 divided by 12? Reply with only the number.,True,passed,3.53,stop,,12
+2026-11-24T08:02:41+00:00,my-first-agent,T14,math,medium,openrouter,nvidia/nemotron-3.5-super-vl:free,Convert 3.5 hours to minutes. Reply with only the number.,True,passed,8.96,stop,,210
+2026-11-24T08:02:44+00:00,my-first-agent,T15,facts,easy,openrouter,particle-ai/particle-1:free,Which is the largest planet in our solar system? Answer with one word only.,True,passed,1.38,stop,,Jupiter
+2026-11-24T08:02:58+00:00,my-first-agent,T16,format,medium,openrouter,recursive/flint-v1.0:free,Write the word hello in capital letters and nothing else.,True,passed,11.92,stop,,HELLO
+2026-11-24T08:03:03+00:00,my-first-agent,T17,counting,medium,openrouter,google/gemma-4-26b-a4b-it:free,"Write the numbers 1 to 5, one per line, nothing else.",True,passed,3.01,stop,,1 | 2 | 3 | 4 | 5
+2026-11-24T08:03:08+00:00,my-first-agent,T18,text,hard,openrouter,nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free,Spell the word banana backwards. Output only the result.,False,failed_check,3.51,length,expected 'ananab' in answer,
+2026-11-24T08:03:12+00:00,my-first-agent,T19,text,hard,openrouter,baidu/ernie-5.5-flash-preview:free,How many times does the letter r appear in the word strawberry? Reply with only the number.,True,passed,1.41,stop,,3
+2026-11-24T08:03:15+00:00,my-first-agent,T20,logic,medium,openrouter,baidu/ernie-5.5-flash-preview:free,Is 97 a prime number? Answer yes or no only.,True,passed,1.46,stop,,Yes

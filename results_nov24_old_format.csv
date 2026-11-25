@@ -1,0 +1,13 @@
+time,category,difficulty,prompt,passed,outcome,latency_s,model,reason
+2026-11-24T13:03:24,counting,easy,"List exactly seven animals, one per line, no numbering.",True,passed,11.7,inclusionai/ling-3.2-flash:free,
+2026-11-24T13:03:29,counting,easy,"Name four rivers, one per line, no extra text.",True,passed,3.29,nvidia/nemotron-3.5-super-vl:free,
+2026-11-24T13:03:33,format,easy,Write the word yes and nothing else.,True,passed,2.39,recursive/flint-v1.0:free,
+2026-11-24T13:03:37,facts,easy,What is the capital of Australia? Answer with one word only.,True,passed,1.1,recursive/flint-v1.0:free,
+2026-11-24T13:03:40,math,medium,What is 17 times 23? Reply with only the number.,True,passed,1.3,recursive/flint-v1.0:free,
+2026-11-24T13:03:43,math,medium,What is 15 percent of 240? Reply with only the number.,True,passed,1.05,liquid/lfm-3-1.7b:free,
+2026-11-24T13:03:47,json,medium,Return only valid JSON with keys name and age for a fictional person. No other text.,True,passed,1.84,particle-ai/particle-1:free,
+2026-11-24T13:03:56,sorting,medium,"List five fruits in alphabetical order, one per line, no numbering.",False,failed_check,6.98,nvidia/nemotron-3.5-lightning:free,need 5 lines in alphabetical order
+2026-11-24T13:04:02,text,hard,Reverse the word telescope. Output only the reversed word.,False,failed_check,3.8,liquid/lfm-3-1.7b:free,expected 'epocselet' in answer
+2026-11-24T13:04:10,constraints,hard,Describe the ocean in exactly 12 words. Output only the sentence.,False,failed_check,6.57,nvidia/nemotron-3-ultra-550b-a55b:free,"expected 12 words, got 0"
+2026-11-24T13:04:16,constraints,hard,"Give three palindromic words, one per line, no extra text.",True,passed,3.55,dots-studio/dots-3-note-preview:free,
+2026-11-24T13:04:23,constraints,hard,Write one sentence of at least 8 words without using the letter e.,False,failed_check,5.54,recursive/flint-v1.0:free,needs 8+ words and no letter 'e'
