@@ -2,6 +2,7 @@ import csv
 import json
 import os
 import re
+import subprocess
 import time
 from datetime import datetime, timezone
 
@@ -13,14 +14,36 @@ morse_ai.init()
 
 # ---------- settings (all overridable from the terminal) ----------
 AGENT = os.environ.get("MORSE_AGENT", "my-first-agent")      # use another name for experiments
-RUN_LABEL = os.environ.get("RUN_LABEL", "official")          # tags each run in Morse and the CSV
+RUN_LABEL = os.environ.get("RUN_LABEL", "official")          # tags each run in Amund and the CSV
 MAX_TOKENS = int(os.environ.get("MAX_TOKENS", "400"))
+PROMPT_VERSION = int(os.environ.get("PROMPT_VERSION", "1"))  # 1 = no system prompt, 2 = concise prompt
 ONLY = {x.strip().upper() for x in os.environ.get("ONLY_TESTS", "").split(",") if x.strip()}
 RESULTS_FILE = "results.csv"
 OPENROUTER_DAILY_BUDGET = 40  # free tier allows 50/day; keep a safety margin
 
 # Synthetic customers: made-up names used only to test the "Cost by customer" feature.
 CUSTOMERS = ["acme-school", "demo-shop", "test-lab"]
+
+# Prompt versions of the "answer-style" prompt.
+SYSTEM_PROMPTS = {
+    1: None,
+    2: "Answer with only what is asked. Do not explain and do not show your reasoning. "
+       "Keep the reply as short as possible.",
+}
+if PROMPT_VERSION not in SYSTEM_PROMPTS:
+    raise SystemExit(f"PROMPT_VERSION must be one of {sorted(SYSTEM_PROMPTS)}")
+SYSTEM_PROMPT = SYSTEM_PROMPTS[PROMPT_VERSION]
+
+
+def git_rev():
+    try:
+        return subprocess.check_output(["git", "rev-parse", "--short", "HEAD"],
+                                       stderr=subprocess.DEVNULL, timeout=5).decode().strip()
+    except Exception:
+        return ""
+
+
+GIT_REV = git_rev()
 
 # ---------- providers, tried in order ----------
 PROVIDERS = []
@@ -195,9 +218,9 @@ if unknown:
     raise SystemExit(f"Unknown test IDs in ONLY_TESTS: {sorted(unknown)}")
 SELECTED = [(tid, t) for tid, t in ALL_TESTS if not ONLY or tid in ONLY]
 
-FIELDS = ["time_utc", "agent", "run_label", "customer_id", "test_id", "category", "difficulty",
-          "provider", "model", "max_tokens", "prompt", "passed", "outcome", "latency_s",
-          "finish_reason", "reason", "answer_preview"]
+FIELDS = ["time_utc", "agent", "run_label", "prompt_version", "git_revision", "customer_id", "test_id",
+          "category", "difficulty", "provider", "model", "max_tokens", "prompt", "passed", "outcome",
+          "latency_s", "finish_reason", "reason", "answer_preview"]
 
 
 # ---------- quota guard (approximate: counts today's logged OpenRouter requests) ----------
@@ -222,19 +245,24 @@ if used + len(SELECTED) > OPENROUTER_DAILY_BUDGET:
 if not PROVIDERS:
     raise SystemExit("No provider available. Set OPENROUTER_API_KEY and/or GEMINI_API_KEY.")
 
-print("Agent:", AGENT, "| label:", RUN_LABEL, "| max_tokens:", MAX_TOKENS, "| tests:", len(SELECTED))
+print("Agent:", AGENT, "| label:", RUN_LABEL, "| prompt v", PROMPT_VERSION, "| max_tokens:", MAX_TOKENS,
+      "| tests:", len(SELECTED), "| git:", GIT_REV or "(none)")
 print("Providers this run:", [(p["name"], p["model"]) for p in PROVIDERS])
 
 
 def ask(prompt):
     """At most two passes over the providers. Fails over on rate limits or server trouble."""
+    messages = []
+    if SYSTEM_PROMPT:
+        messages.append({"role": "system", "content": SYSTEM_PROMPT})
+    messages.append({"role": "user", "content": prompt})
     errors = []
     for attempt in range(2):
         for p in PROVIDERS:
             try:
                 resp = p["client"].chat.completions.create(
                     model=p["model"],
-                    messages=[{"role": "user", "content": prompt}],
+                    messages=messages,
                     max_tokens=MAX_TOKENS,
                     **p["extra"],
                 )
@@ -250,7 +278,8 @@ rows = []
 
 for test_id, t in SELECTED:
     customer_id = CUSTOMERS[int(test_id[1:]) % len(CUSTOMERS)]   # synthetic, deterministic
-    with morse_ai.run(AGENT) as r:
+    with morse_ai.run(AGENT, record_keys={"test_case": test_id}) as r:
+        morse_ai.set_prompt("answer-style", version=PROMPT_VERSION)
         morse_ai.set_context(test_id=test_id, category=t["category"], difficulty=t["difficulty"],
                              run_label=RUN_LABEL, max_tokens=str(MAX_TOKENS),
                              customer_id=customer_id)
@@ -278,7 +307,8 @@ for test_id, t in SELECTED:
           customer_id, "|", model_used or "-", "|", latency, "s |", finish_reason or "-", "|", reason)
     rows.append({
         "time_utc": datetime.now(timezone.utc).isoformat(timespec="seconds"),
-        "agent": AGENT, "run_label": RUN_LABEL, "customer_id": customer_id,
+        "agent": AGENT, "run_label": RUN_LABEL, "prompt_version": PROMPT_VERSION,
+        "git_revision": GIT_REV, "customer_id": customer_id,
         "test_id": test_id, "category": t["category"], "difficulty": t["difficulty"],
         "provider": provider, "model": model_used, "max_tokens": MAX_TOKENS,
         "prompt": t["prompt"], "passed": ok, "outcome": outcome, "latency_s": latency,
@@ -303,8 +333,4 @@ for level in ("easy", "medium", "hard"):
     group = [row for row in rows if row["difficulty"] == level]
     if group:
         print(f"  {level}: {sum(1 for row in group if row['passed'])}/{len(group)}")
-for cust in CUSTOMERS:
-    group = [row for row in rows if row["customer_id"] == cust]
-    if group:
-        print(f"  {cust}: {sum(1 for row in group if row['passed'])}/{len(group)}")
 print("  truncated (finish=length):", sum(1 for row in rows if row["finish_reason"] == "length"))
