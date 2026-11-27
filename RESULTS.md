@@ -1,14 +1,14 @@
 # Test results
 
-Generated 2026-11-27T05:26:35+00:00 UTC from: results.csv, results_before_v6.csv, results_before_v7_20261126_0921.csv, results_before_v8_20261126_1021.csv, results_nov24_old_format.csv, results_nov24_v1.csv, results_old.csv
+Generated 2026-11-27T05:58:47+00:00 UTC from: results.csv, results_before_v6.csv, results_before_v7_20261126_0921.csv, results_before_v8_20261126_1021.csv, results_nov24_old_format.csv, results_nov24_v1.csv, results_old.csv
 
-**133 of 166 runs passed (80%)**
+**125 of 154 runs passed (81%)**
 
 ## By agent
 
 | Group | Passed | Total | Rate |
 |---|---|---|---|
-| (older file) | 26 | 36 | 72% |
+| (older file) | 18 | 24 | 75% |
 | customer-demo-agent | 9 | 10 | 90% |
 | my-first-agent | 88 | 100 | 88% |
 | sandbox-agent | 10 | 20 | 50% |
@@ -17,45 +17,45 @@ Generated 2026-11-27T05:26:35+00:00 UTC from: results.csv, results_before_v6.csv
 
 | Group | Passed | Total | Rate |
 |---|---|---|---|
-| easy | 50 | 50 | 100% |
-| hard | 28 | 57 | 49% |
-| medium | 55 | 59 | 93% |
+| easy | 46 | 46 | 100% |
+| hard | 27 | 53 | 50% |
+| medium | 52 | 55 | 94% |
 
 ## By category
 
 | Group | Passed | Total | Rate |
 |---|---|---|---|
-| constraints | 17 | 26 | 65% |
-| counting | 23 | 23 | 100% |
-| facts | 17 | 17 | 100% |
-| format | 14 | 14 | 100% |
-| json | 9 | 10 | 90% |
+| constraints | 16 | 23 | 69% |
+| counting | 21 | 21 | 100% |
+| facts | 16 | 16 | 100% |
+| format | 13 | 13 | 100% |
+| json | 8 | 9 | 88% |
 | logic | 5 | 5 | 100% |
-| math | 31 | 31 | 100% |
-| sorting | 6 | 9 | 66% |
-| text | 11 | 31 | 35% |
+| math | 29 | 29 | 100% |
+| sorting | 6 | 8 | 75% |
+| text | 11 | 30 | 36% |
 
 ## By model
 
 | Group | Passed | Total | Rate |
 |---|---|---|---|
 | baidu/ernie-5.5-flash-preview:free | 17 | 18 | 94% |
-| dots-studio/dots-3-note-preview:free | 3 | 3 | 100% |
+| dots-studio/dots-3-note-preview:free | 2 | 2 | 100% |
 | google/gemma-4-26b-a4b-it:free | 2 | 2 | 100% |
-| inclusionai/ling-3.2-flash:free | 5 | 5 | 100% |
-| liquid/lfm-3-1.7b:free | 11 | 16 | 68% |
+| inclusionai/ling-3.2-flash:free | 4 | 4 | 100% |
+| liquid/lfm-3-1.7b:free | 10 | 14 | 71% |
 | nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free | 22 | 34 | 64% |
-| nvidia/nemotron-3-ultra-550b-a55b:free | 11 | 13 | 84% |
-| nvidia/nemotron-3.5-lightning:free | 7 | 13 | 53% |
-| nvidia/nemotron-3.5-super-vl:free | 17 | 19 | 89% |
-| particle-ai/particle-1:free | 17 | 17 | 100% |
-| recursive/flint-v1.0:free | 21 | 26 | 80% |
+| nvidia/nemotron-3-ultra-550b-a55b:free | 11 | 12 | 91% |
+| nvidia/nemotron-3.5-lightning:free | 7 | 12 | 58% |
+| nvidia/nemotron-3.5-super-vl:free | 16 | 18 | 88% |
+| particle-ai/particle-1:free | 16 | 16 | 100% |
+| recursive/flint-v1.0:free | 18 | 22 | 81% |
 
 ## By finish reason
 
 | Group | Passed | Total | Rate |
 |---|---|---|---|
-| (not logged) | 26 | 36 | 72% |
+| (not logged) | 18 | 24 | 75% |
 | length | 0 | 23 | 0% |
 | stop | 107 | 107 | 100% |
 
@@ -86,10 +86,6 @@ Generated 2026-11-27T05:26:35+00:00 UTC from: results.csv, results_before_v6.csv
 | 2026-11-26T03:58 | my-first-agent | T09 | liquid/lfm-3-1.7b:free | length | expected 'epocselet' in answer |
 | 2026-11-26T03:58 | my-first-agent | T18 | nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free | length | expected 'ananab' in answer |
 | 2026-11-26T04:08 | customer-demo-agent | T08 | nvidia/nemotron-3.5-lightning:free | length | need 5 lines in alphabetical order |
-| 2026-11-24T13:03 | - | - | nvidia/nemotron-3.5-lightning:free | - | need 5 lines in alphabetical order |
-| 2026-11-24T13:04 | - | - | liquid/lfm-3-1.7b:free | - | expected 'epocselet' in answer |
-| 2026-11-24T13:04 | - | - | nvidia/nemotron-3-ultra-550b-a55b:free | - | expected 12 words, got 0 |
-| 2026-11-24T13:04 | - | - | recursive/flint-v1.0:free | - | needs 8+ words and no letter 'e' |
 | 2026-11-24T13:03 | - | - | nvidia/nemotron-3.5-lightning:free | - | need 5 lines in alphabetical order |
 | 2026-11-24T13:04 | - | - | liquid/lfm-3-1.7b:free | - | expected 'epocselet' in answer |
 | 2026-11-24T13:04 | - | - | nvidia/nemotron-3-ultra-550b-a55b:free | - | expected 12 words, got 0 |

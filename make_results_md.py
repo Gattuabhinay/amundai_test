@@ -4,12 +4,15 @@ from collections import defaultdict
 from datetime import datetime, timezone
 
 files = sorted(glob.glob("results*.csv"))
-rows = []
+rows, seen = [], set()
 for f in files:
     with open(f, newline="", encoding="utf-8") as fh:
-        rows.extend(csv.DictReader(fh))
-
-
+        for r in csv.DictReader(fh):
+            key = (r.get("time_utc") or r.get("time"), r.get("prompt"), r.get("model"), r.get("test_id"))
+            if key in seen:
+                continue
+            seen.add(key)
+            rows.append(r)
 def ok(r):
     return str(r.get("passed")) == "True"
 
