@@ -1,0 +1,25 @@
+trace_id,agent_name,environment_name,status,success,outcome,outcome_provenance,started_at,duration_ms,total_tokens,cost_usd,thread_id,user_id,metadata,feedback_positive,feedback_negative
+166dd791-c661-4536-a3ab-905b38e4a5d2,my-first-agent,production,completed,False,failed_check,developer,2026-11-23 04:53:14.645592+00:00,2003,431,0.000000,,,"{""category"": ""constraints"", ""difficulty"": ""hard""}",0,0
+2979276a-37b2-44dc-bc60-c6b616048fee,my-first-agent,production,completed,True,passed,developer,2026-11-23 04:53:10.673857+00:00,1969,178,0.000000,,,"{""category"": ""constraints"", ""difficulty"": ""hard""}",0,0
+538e2814-3c13-449c-aca9-dfdd72dce202,my-first-agent,production,completed,True,passed,developer,2026-11-23 04:53:07.221126+00:00,1450,200,0.000000,,,"{""category"": ""constraints"", ""difficulty"": ""hard""}",0,0
+7dabf076-057e-4932-b661-955088e8d81a,my-first-agent,production,completed,False,failed_check,developer,2026-11-23 04:53:02.051991+00:00,3166,436,0.000000,,,"{""category"": ""text"", ""difficulty"": ""hard""}",0,0
+788f6e61-5549-4dd8-af32-f4b607fa34ba,my-first-agent,production,completed,True,passed,developer,2026-11-23 04:52:58.001734+00:00,2048,125,0.000000,,,"{""category"": ""sorting"", ""difficulty"": ""medium""}",0,0
+db659dd6-07f9-46b9-b962-7f1370b90904,my-first-agent,production,completed,True,passed,developer,2026-11-23 04:52:54.414102+00:00,1584,117,0.000000,,,"{""category"": ""json"", ""difficulty"": ""medium""}",0,0
+5fafc977-c075-46ee-988d-49d78f9aa5ca,my-first-agent,production,completed,True,passed,developer,2026-11-23 04:52:51.366287+00:00,1046,151,0.000000,,,"{""category"": ""math"", ""difficulty"": ""medium""}",0,0
+29204cf9-d8f2-4b17-9659-e6188649bfdd,my-first-agent,production,completed,True,passed,developer,2026-11-23 04:52:45.124521+00:00,4239,277,0.000000,,,"{""category"": ""math"", ""difficulty"": ""medium""}",0,0
+8d0f988c-b2b6-43bb-a00e-55f43284bf0a,my-first-agent,production,completed,True,passed,developer,2026-11-23 04:52:41.944675+00:00,1177,163,0.000000,,,"{""category"": ""facts"", ""difficulty"": ""easy""}",0,0
+4c854875-57bc-41a9-8a82-91a8c16c712e,my-first-agent,production,completed,True,passed,developer,2026-11-23 04:52:39.245861+00:00,697,76,0.000000,,,"{""category"": ""format"", ""difficulty"": ""easy""}",0,0
+c745477b-aa73-49ab-8014-849969a37a9b,my-first-agent,production,completed,True,passed,developer,2026-11-23 04:52:34.892061+00:00,2351,155,0.000000,,,"{""category"": ""counting"", ""difficulty"": ""easy""}",0,0
+8de2d11e-403f-40df-bae7-b837cec022ac,my-first-agent,production,completed,True,passed,developer,2026-11-23 04:52:31.178129+00:00,1712,95,0.000000,,,"{""category"": ""counting"", ""difficulty"": ""easy""}",0,0
+aee0ccd8-5533-4463-a60d-85bbf96957af,my-first-agent,production,completed,True,correct_shape,developer,2026-11-23 04:10:39.754064+00:00,1788,145,0.000000,,,,0,0
+5fc013c9-5818-49f7-ae85-89a32f152085,my-first-agent,production,completed,True,correct_shape,developer,2026-11-23 04:10:38.824484+00:00,929,81,0.000000,,,,0,0
+3ce90727-d490-423b-90ae-345af5d824b1,my-first-agent,production,completed,True,correct_shape,developer,2026-11-23 04:10:37.356579+00:00,1463,158,0.000000,,,,0,0
+48c20f26-fde6-4c34-87be-9c8a37a378cb,my-first-agent,production,completed,True,correct_shape,developer,2026-11-23 04:10:26.118379+00:00,11237,71,0.000000,,,,0,0
+0e03a363-72e3-4bad-aa2d-63e7eb01dd51,my-first-agent,production,completed,True,correct_shape,developer,2026-11-23 04:10:25.014050+00:00,1102,222,0.000000,,,,0,0
+f9ba2e74-af7d-4195-a941-3f0e5e94f2a3,my-first-agent,production,completed,True,correct_shape,developer,2026-11-23 04:10:23.233150+00:00,1776,196,0.000000,,,,0,0
+9a690afe-2841-4f15-9ee8-736036ae7c3c,my-first-agent,production,completed,True,correct_shape,developer,2026-11-22 08:47:09.440519+00:00,2582,173,0.000000,,,,0,0
+dd1ac311-957b-4fe4-b705-f17d5a17dec0,my-first-agent,production,completed,True,correct_shape,developer,2026-11-22 08:47:07.505228+00:00,1933,74,0.000000,,,,0,0
+711729aa-466c-4452-ac1d-131dfa8a6727,my-first-agent,production,completed,True,correct_shape,developer,2026-11-22 08:47:06.565669+00:00,937,141,0.000000,,,,0,0
+19c8e42c-1288-4b6c-a52d-d1b6aec90dc4,my-first-agent,production,completed,True,correct_shape,developer,2026-11-22 08:47:05.899589+00:00,663,97,0.000000,,,,0,0
+1b2735d4-51bf-4695-ab1e-466de9c12847,my-first-agent,production,completed,True,correct_shape,developer,2026-11-22 08:47:04.255824+00:00,1642,274,0.000000,,,,0,0
+3e686505-43d1-4d35-968b-d576ee51f45b,my-first-agent,production,completed,True,correct_shape,developer,2026-11-22 08:46:57.821454+00:00,6430,287,0.000000,,,,0,0
