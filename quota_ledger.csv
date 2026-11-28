@@ -2,3 +2,8 @@ date_utc,step,requests
 2026-11-27,official run,20
 2026-11-27,thread demo,9
 2026-11-28,official run,20
+2026-11-28,official run,20
+2026-11-28,prompt A/B v1,6
+2026-11-28,prompt A/B v2,6
+2026-11-28,thread demo,9
+2026-11-28,github demo,1
